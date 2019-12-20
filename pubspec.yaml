@@ -4,5 +4,9 @@ homepage: https://github.com/damoti/mersenne
 author: Lex Berezhny <lex@damoti.com>
 description: >
     A Dart package for generating high-quality Mersenne Twister random numbers.
+
+environment:
+  sdk: '>=1.0.0 <3.0.0'
+
 dev_dependencies:
   unittest: any

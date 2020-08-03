@@ -273,6 +273,10 @@ class MersenneTwister {
     return _gen.genrand_real2();
   }
 
+  bool rand_bool() {
+    return _gen.genrand_real2() < 0.5;
+  }
+
   seed(int S) {
     _gen.init_genrand(S);
   }

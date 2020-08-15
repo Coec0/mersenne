@@ -286,7 +286,8 @@ class MersenneTwister {
   }
 
   double _dual_rand([bool old = false]){
-    _gen.genrand_real2();
+     if(!old)
+      _gen.genrand_real2();
     return _gen.genrand_real2();
   }
 }

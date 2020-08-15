@@ -262,19 +262,19 @@ class MersenneTwister {
     _gen.init_genrand(new DateTime.now().millisecondsSinceEpoch % 1000000000);
   }
 
-  int rand([int N]) {
+  int rand([int N, bool old = false]) {
     if (N == null) {
       N = 32768;
     }
-    return (_gen.genrand_real2() * N).floor();
+    return (_dual_rand(old) * N).floor();
   }
 
-  double rand_real() {
-    return _gen.genrand_real2();
+  double rand_real([bool old = false]) {
+    return _dual_rand(old);
   }
 
-  bool rand_bool() {
-    return _gen.genrand_real2() < 0.5;
+  bool rand_bool([bool old = false]) {
+    return _dual_rand(old) < 0.5;
   }
 
   seed(int S) {
@@ -283,5 +283,10 @@ class MersenneTwister {
 
   seed_array(List<int> A) {
     _gen.init_by_array(A, A.length);
+  }
+
+  double _dual_rand([bool old = false]){
+    _gen.genrand_real2();
+    return _gen.genrand_real2();
   }
 }

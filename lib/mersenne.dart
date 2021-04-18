@@ -66,7 +66,7 @@ class _MersenneTwister19937 {
 
   //c//static unsigned long mt[N]; /* the array for the state vector  */
   //c//static int mti=N+1; /* mti==N+1 means mt[N] is not initialized */
-  var mt = new List(N);
+  List<int> mt = new List.filled(N, 0, growable: false);
   /* the array for the state vector  */
   var mti = N + 1;
   /* mti==N+1 means mt[N] is not initialized */
@@ -257,12 +257,11 @@ class _MersenneTwister19937 {
 class MersenneTwister {
   _MersenneTwister19937 _gen;
 
-  MersenneTwister() {
-    _gen = new _MersenneTwister19937();
+  MersenneTwister() : _gen = new _MersenneTwister19937() {
     _gen.init_genrand(new DateTime.now().millisecondsSinceEpoch % 1000000000);
   }
 
-  int rand([int N]) {
+  int rand([int? N]) {
     if (N == null) {
       N = 32768;
     }
